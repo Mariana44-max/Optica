@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   mysql-db:
     image: mysql:8.0
@@ -42,13 +40,11 @@ services:
     restart: unless-stopped
     environment:
       PORT: 4001
-      DB_HOST: mysql-db
-      DB_PORT: 3306
-      DB_USER: root
-      DB_PASSWORD: root
-      DB_NAME: optica_auth
-      JWT_SECRET: optica-jwt-secret-cambia-en-produccion
-      JWT_EXPIRES_IN: 2h
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/optica_auth?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      JWT_SECRET: optica-jwt-secret-cambia-en-produccion-12345-67890-abcdef
+      JWT_EXPIRATION_MS: 7200000
     ports:
       - "4001:4001"
     depends_on:
@@ -61,12 +57,10 @@ services:
     restart: unless-stopped
     environment:
       PORT: 4002
-      DB_HOST: postgres-db
-      DB_PORT: 5432
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-      DB_NAME: optica_products
-      JWT_SECRET: optica-jwt-secret-cambia-en-produccion
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/optica_products
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      JWT_SECRET: optica-jwt-secret-cambia-en-produccion-12345-67890-abcdef
     ports:
       - "4002:4002"
     depends_on:

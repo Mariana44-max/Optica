@@ -8,3 +8,16 @@ build/
 .idea/
 .vscode/
 coverage/
+
+# Java / Maven
+target/
+*.class
+*.jar
+*.war
+.mvn/
+mvnw
+mvnw.cmd
+HELP.md
+.gradle/
+out/
+*.iml
