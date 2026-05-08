@@ -1,6 +1,8 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
+const useSSL = String(process.env.DB_SSL || '').toLowerCase() === 'true';
+
 const sequelize = new Sequelize(
   process.env.DB_NAME || 'optica_products',
   process.env.DB_USER || 'postgres',
@@ -10,6 +12,9 @@ const sequelize = new Sequelize(
     port: Number(process.env.DB_PORT) || 5432,
     dialect: 'postgres',
     logging: false,
+    dialectOptions: useSSL
+      ? { ssl: { require: true, rejectUnauthorized: false } }
+      : {},
   }
 );
 
