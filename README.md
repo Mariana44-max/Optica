@@ -497,7 +497,10 @@ Si quieres añadir, por ejemplo, un endpoint para actualizar el stock de un prod
 
 **Mariana** · Universidad Humboldt · Ingeniería de Software · 2026
 
----
+---## Prueba funcional CP-007
+
+Se realizó una prueba de edición de archivos en GitHub.
+El objetivo es verificar que los cambios se guarden correctamente.
 
 <div align="center">
 
